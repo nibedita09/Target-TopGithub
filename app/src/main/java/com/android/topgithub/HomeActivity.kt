@@ -16,15 +16,11 @@ class HomeActivity : AppCompatActivity(), FragmentCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        supportFragmentManager.inTransaction {
-            add(R.id.container, GithubRepositoryListFragment.newInstance())
-        }
-    }
+        supportFragmentManager
+                    .beginTransaction()
+                    .add(R.id.container, GithubRepositoryListFragment.newInstance(), GithubRepositoryListFragment.TAG)
+                    .commit()
 
-    inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
-        val fragmentTransaction = beginTransaction()
-        fragmentTransaction.func()
-        fragmentTransaction.commit()
     }
 
     override fun showAlertDialog(title: String, msg: String) {

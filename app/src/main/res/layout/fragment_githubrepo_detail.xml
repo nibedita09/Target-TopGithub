@@ -7,10 +7,14 @@
             name="repository"
             type="com.android.topgithub.model.Repository"/>
     </data>
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     android:background="@android:color/white">
 
     <TextView
@@ -162,4 +166,5 @@
         app:layout_constraintStart_toStartOf="@+id/description"
         app:layout_constraintTop_toBottomOf="@+id/titleDescription" />
 </android.support.constraint.ConstraintLayout>
+</ScrollView>
 </layout>

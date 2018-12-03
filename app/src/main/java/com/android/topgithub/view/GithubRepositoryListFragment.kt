@@ -33,10 +33,10 @@ class GithubRepositoryListFragment : BaseFragment() {
 
     private var githubRepoAdapter : GithubRepoListAdapter? = null
     private var activityContext : Context? = null
-    private var fragmentCallback : FragmentCallback? = null
     private lateinit var disposable : Disposable
 
     companion object {
+        val TAG : String = GithubRepositoryListFragment.javaClass.simpleName
         fun newInstance() : GithubRepositoryListFragment{
             val fragment = GithubRepositoryListFragment()
             return fragment
@@ -45,7 +45,6 @@ class GithubRepositoryListFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        retainInstance = true
         TopGithubApplication.appComponent.inject(this)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(GithubRepositoryListViewModel::class.java)
     }
@@ -63,7 +62,7 @@ class GithubRepositoryListFragment : BaseFragment() {
         loadData()
     }
 
-    fun loadData(){
+    private fun loadData(){
         viewModel.setLoading(true)
         disposable = viewModel.getReposObservable().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -84,23 +83,21 @@ class GithubRepositoryListFragment : BaseFragment() {
         viewModel.setLoading(false)
 
         if(error is UnknownHostException)
-            fragmentCallback!!.showAlertDialog(getString(R.string.error_title), getString(R.string.error_msg_network))
+            super.showAlertDialog(getString(R.string.error_title), getString(R.string.error_msg_network))
         else {
-            fragmentCallback!!.showAlertDialog(getString(R.string.error_title), getString(R.string.error_msg_technical))
+            super.showAlertDialog(getString(R.string.error_title), getString(R.string.error_msg_technical))
         }
     }
 
     inner class ListItemCallback : ItemClickCallback<Repository> {
         override fun onClick(t: Repository) {
-            navigateTo(GithubRepositoryDetailFragment.newInstance(t), GithubRepositoryDetailFragment.TAG, true)
+            navigateTo(GithubRepositoryDetailFragment.newInstance(t), GithubRepositoryDetailFragment.TAG)
         }
     }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         activityContext  = context
-        if(activityContext is FragmentCallback) fragmentCallback = context as FragmentCallback
-
     }
 
     override fun onStop() {
