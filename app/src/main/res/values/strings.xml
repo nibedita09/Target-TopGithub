@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">TopGithub</string>
+    <string name="username">Username</string>
+    <string name="name">Name</string>
+    <string name="url">Url</string>
+    <string name="avatar">Avatar</string>
+    <string name="repository_details">Repository Details</string>
+    <string name="repository_name">Repository Name</string>
+    <string name="description">Description</string>
+    <string name="repository_url">Repository Url</string>
+    <string name="error_title">Oops Error!!</string>
+    <string name="error_msg_network">Please check device network connection</string>
+    <string name="error_msg_technical">Technical Error.Please try later!!</string>
+    <string name="ok">Ok</string>
+</resources>
