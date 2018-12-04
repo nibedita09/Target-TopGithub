@@ -13,7 +13,7 @@ import com.android.topgithub.model.Repository
 class GithubRepositoryDetailFragment : BaseFragment(){
 
     companion object {
-        val TAG : String = GithubRepositoryDetailFragment.javaClass.simpleName
+        val TAG : String = GithubRepositoryDetailFragment::class.java.simpleName
         private const val KEY_REPO : String = "repo"
 
         fun newInstance(repository : Repository) : GithubRepositoryDetailFragment{

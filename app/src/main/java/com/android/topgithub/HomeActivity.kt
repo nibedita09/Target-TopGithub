@@ -1,8 +1,6 @@
 package com.android.topgithub
 
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import com.android.topgithub.view.FragmentCallback
@@ -27,7 +25,7 @@ class HomeActivity : AppCompatActivity(), FragmentCallback {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(title)
         builder.setMessage(msg)
-        builder.setPositiveButton(getString(R.string.ok)) { dialog, which ->
+        builder.setPositiveButton(getString(R.string.ok)) { dialog, _ ->
             dialog.dismiss()
             finish()
         }

@@ -27,8 +27,8 @@ class GithubRepoListAdapter(var data : List<Repository>, val itemCallback : Item
         return ViewHolder(binding)
     }
 
-    fun setItems(items: List<*>) {
-        data = items as List<Repository>
+    fun setItems(items: List<Repository>) {
+        data = items
         notifyDataSetChanged()
     }
 

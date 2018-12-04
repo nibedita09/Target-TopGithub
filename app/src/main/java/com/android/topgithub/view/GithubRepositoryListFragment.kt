@@ -36,7 +36,7 @@ class GithubRepositoryListFragment : BaseFragment() {
     private lateinit var disposable : Disposable
 
     companion object {
-        val TAG : String = GithubRepositoryListFragment.javaClass.simpleName
+        val TAG : String = GithubRepositoryListFragment::class.java.simpleName
         fun newInstance() : GithubRepositoryListFragment{
             val fragment = GithubRepositoryListFragment()
             return fragment
