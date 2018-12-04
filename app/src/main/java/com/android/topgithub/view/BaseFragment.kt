@@ -29,6 +29,6 @@ open class BaseFragment : Fragment() {
     }
 
     fun showAlertDialog(title : String, msg : String){
-        fragmentCallback!!.showAlertDialog(title, msg)
+        fragmentCallback?.showAlertDialog(title, msg)
     }
 }
